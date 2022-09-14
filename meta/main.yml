@@ -1,0 +1,25 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: honeybadger
+  author: Luis Fernández @treezio
+  description: HoneyBadger Teams and Users Management
+  issue_tracker_url: https://github.com/sequra/ansible-role-honeybadger/issues
+  company: SeQura
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: MacOSX
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - monitoring
+    - honeybadger
+    - credentials

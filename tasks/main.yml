@@ -1,0 +1,47 @@
+---
+- name: Create Team
+  honeybadger_team:
+    honeybadger_api_key: "{{ honeybadger_api_key }}"
+    team: "{{ item }}"
+  with_items: "{{ honeybadger_active_teams }}"
+  tags:
+    - credentials
+    - honeybadger
+
+- name: Delete Team
+  honeybadger_team:
+    honeybadger_api_key: "{{ honeybadger_api_key }}"
+    team: "{{ item }}"
+    state: "absent"
+  with_items: "{{ honeybadger_inactive_teams }}"
+  tags:
+    - credentials
+    - honeybadger
+
+- name: Create User accounts
+  honeybadger_user:
+    honeybadger_api_key: "{{ honeybadger_api_key }}"
+    email: "{{ item.0.email }}"
+    team: "{{ item.1.name }}"
+    admin: "{{ item.1.admin | default(False) }}"
+    honeybadger_active_teams: "{{ honeybadger_active_teams }}"
+  with_subelements:
+    - "{{ honeybadger_active_users }}"
+    - teams
+  tags:
+    - credentials
+    - honeybadger
+
+- name: Remove User accounts
+  honeybadger_user:
+    honeybadger_api_key: "{{ honeybadger_api_key }}"
+    email: "{{ item.0.email }}"
+    team: "{{ item.1.name }}"
+    honeybadger_active_teams: "{{ honeybadger_active_teams }}"
+    state: absent
+  with_subelements:
+    - "{{ honeybadger_inactive_users }}"
+    - teams
+  tags:
+    - credentials
+    - honeybadger
