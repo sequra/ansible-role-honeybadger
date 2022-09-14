@@ -4,7 +4,7 @@
 
 This role manages teams and users on a [honeybadger.io](https://www.honeybadger.io/) organization.
 
-This ansible role is intended to run requests to `honeybadger` API locally.
+This ansible role is intended to send requests to Honeybadger API locally.
 
 ## Requirements
 
@@ -14,6 +14,13 @@ Optional: It is recommended to create a python virtual environment to manage pyt
 
 Install the necessary Python Packages/Libraries in your ansible virtualenv by running:
 `pip install -r requirements.txt`
+
+## Configuration
+
+Create `~/.honeybadger.json` file containing the Honeybadger API Key as follows:
+```
+{"api_key":"$YOUR_API_KEY"}
+```
 
 ## Role Variables
 
