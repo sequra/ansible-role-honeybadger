@@ -92,7 +92,7 @@ As the ansible connection must be local, add the following to your hosts file:
 
 ```
 [honeybadger]
-my_organization ansible_host=127.0.100.1 ansible_connection=local
+my_organization ansible_host=127.0.100.1 ansible_connection=local ansible_python_interpreter="/usr/bin/env python3"
 ```
 
 ### Keeping vars file clean
